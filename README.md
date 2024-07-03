@@ -1,155 +1,133 @@
-![Betaflight](images/bf_logo.png)
-
-[![Latest version](https://img.shields.io/github/v/release/betaflight/betaflight)](https://github.com/betaflight/betaflight/releases) [![Build](https://img.shields.io/github/actions/workflow/status/betaflight/betaflight/nightly.yml?branch=master)](https://github.com/betaflight/betaflight/actions/workflows/nightly.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Join us on Discord!](https://img.shields.io/discord/868013470023548938)](https://discord.gg/n4E6ak4u3c)
-
-Betaflight is flight controller software (firmware) used to fly multi-rotor craft and fixed wing craft.
-
-This fork differs from Baseflight and Cleanflight in that it focuses on flight performance, leading-edge feature additions, and wide target support.
-
-## Events
-
-| Date  | Event |
-| - | - |
-| 28-04-2024 | Firmware 4.5 Release |
-
-
-## News
-
-### Requirements for the submission of new and updated targets
-
-The following new requirements for pull requests adding new targets or modifying existing targets are put in place from now on:
-
-1. Read the [hardware specification](https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines)
-
-2. No new F3 based targets will be accepted;
-
-3. For any new target that is to be added, only a Unified Target config into https://github.com/betaflight/unified-targets/tree/master/configs/default needs to be submitted. See the [instructions](https://betaflight.com/docs/manufacturer/creating-an-unified-target) for how to create a Unified Target configuration. If there is no Unified Target for the MCU type of the new target (see instructions above), then a 'legacy' format target definition into `src/main/target/` has to be submitted as well;
-
-4. For changes to existing targets, the change needs to be applied to the Unified Target config in https://github.com/betaflight/unified-targets/tree/master/configs/default. If no Unified Target configuration for the target exists, a new Unified Target configuration will have to be created and submitted. If there is no Unified Target for the MCU type of the new target (see instructions above), then an update to the 'legacy' format target definition in `src/main/target/` has to be submitted alongside the update to the Unified Target configuration.
-
-
-## Features
-
-Betaflight has the following features:
-
-* Multi-color RGB LED strip support (each LED can be a different color using variable length WS2811 Addressable RGB strips - use for Orientation Indicators, Low Battery Warning, Flight Mode Status, Initialization Troubleshooting, etc)
-* DShot (150, 300 and 600), Multishot, Oneshot (125 and 42) and Proshot1000 motor protocol support
-* Blackbox flight recorder logging (to onboard flash or external microSD card where equipped)
-* Support for targets that use the STM32 F4, G4, F7 and H7 processors
-* PWM, PPM, SPI, and Serial (SBus, SumH, SumD, Spektrum 1024/2048, XBus, etc) RX connection with failsafe detection
-* Multiple telemetry protocols (CRSF, FrSky, HoTT smart-port, MSP, etc)
-* RSSI via ADC - Uses ADC to read PWM RSSI signals, tested with FrSky D4R-II, X8R, X4R-SB, & XSR
-* OSD support & configuration without needing third-party OSD software/firmware/comm devices
-* OLED Displays - Display information on: Battery voltage/current/mAh, profile, rate profile, mode, version, sensors, etc
-* In-flight manual PID tuning and rate adjustment
-* PID and filter tuning using sliders
-* Rate profiles and in-flight selection of them
-* Configurable serial ports for Serial RX, Telemetry, ESC telemetry, MSP, GPS, OSD, Sonar, etc - Use most devices on any port, softserial included
-* VTX support for Unify Pro and IRC Tramp
-* and MUCH, MUCH more.
-
-## Installation & Documentation
-
-See: https://betaflight.com/docs/wiki
-
-## Support and Developers Channel
-
-There's a dedicated Discord server here:
-
-https://discord.gg/n4E6ak4u3c
-
-We also have a Facebook Group. Join us to get a place to talk about Betaflight, ask configuration questions, or just hang out with fellow pilots.
-
-https://www.facebook.com/groups/betaflightgroup/
-
-Etiquette: Don't ask to ask and please wait around long enough for a reply - sometimes people are out flying, asleep or at work and can't answer immediately.
-
-## Configuration Tool
-
-To configure Betaflight you should use the Betaflight-configurator GUI tool (Windows/OSX/Linux) which can be found here:
-
-https://github.com/betaflight/betaflight-configurator/releases/latest
-
-## Contributing
-
-Contributions are welcome and encouraged. You can contribute in many ways:
-
-* implement a new feature in the firmware or in configurator (see [below](#Developers));
-* documentation updates and corrections;
-* How-To guides - received help? Help others!
-* bug reporting & fixes;
-* new feature ideas & suggestions;
-* provide a new translation for configurator, or help us maintain the existing ones (see [below](#Translators)).
-
-The best place to start is the Betaflight Discord (registration [here](https://discord.gg/n4E6ak4u3c)). Next place is the github issue tracker:
-
-https://github.com/betaflight/betaflight/issues
-https://github.com/betaflight/betaflight-configurator/issues
-
-Before creating new issues please check to see if there is an existing one, search first otherwise you waste people's time when they could be coding instead!
-
-If you want to contribute to our efforts financially, please consider making a donation to us through [PayPal](https://paypal.me/betaflight).
-
-If you want to contribute financially on an ongoing basis, you should consider becoming a patron for us on [Patreon](https://www.patreon.com/betaflight).
-
-## Developers
-
-Contribution of bugfixes and new features is encouraged. Please be aware that we have a thorough review process for pull requests, and be prepared to explain what you want to achieve with your pull request.
-Before starting to write code, please read our [development guidelines](https://betaflight.com/docs/development) and [coding style definition](https://betaflight.com/docs/development/CodingStyle).
-
-GitHub actions are used to run automatic builds
-
-## Translators
-
-We want to make Betaflight accessible for pilots who are not fluent in English, and for this reason we are currently maintaining translations into 21 languages for Betaflight Configurator: Català, Dansk, Deutsch, Español, Euskera, Français, Galego, Hrvatski, Bahasa Indonesia, Italiano, 日本語, 한국어, Latviešu, Português, Português Brasileiro, polski, Русский язык, Svenska, 简体中文, 繁體中文.
-We have got a team of volunteer translators who do this work, but additional translators are always welcome to share the workload, and we are keen to add additional languages. If you would like to help us with translations, you have got the following options:
-- if you help by suggesting some updates or improvements to translations in a language you are familiar with, head to [crowdin](https://crowdin.com/project/betaflight-configurator) and add your suggested translations there;
-- if you would like to start working on the translation for a new language, or take on responsibility for proof-reading the translation for a language you are very familiar with, please head to the Betaflight Discord chat (registration [here](https://discord.gg/n4E6ak4u3c)), and join the ['translation'](https://discord.com/channels/868013470023548938/1057773726915100702) channel - the people in there can help you to get a new language added, or set you up as a proof reader.
-
-## Hardware Issues
-
-Betaflight does not manufacture or distribute their own hardware. While we are collaborating with and supported by a number of manufacturers, we do not do any kind of hardware support.
-If you encounter any hardware issues with your flight controller or another component, please contact the manufacturer or supplier of your hardware, or check RCGroups https://rcgroups.com/forums/showthread.php?t=2464844 to see if others with the same problem have found a solution.
-
-## Betaflight Releases
-
-https://github.com/betaflight/betaflight/releases
-
-## Open Source / Contributors
-
-Betaflight is software that is **open source** and is available free of charge without warranty to all users.
-
-Betaflight is forked from Cleanflight, so thanks goes to all those who have contributed to Cleanflight and its origins.
-
-Origins for this fork (Thanks!):
-* **Alexinparis** (for MultiWii),
-* **timecop** (for Baseflight),
-* **Dominic Clifton** (for Cleanflight),
-* **borisbstyle** (for Betaflight), and
-* **Sambas** (for the original STM32F4 port).
-
-The Betaflight Configurator is forked from Cleanflight Configurator and its origins.
-
-Origins for Betaflight Configurator:
-* **Dominic Clifton** (for Cleanflight configurator), and
-* **ctn** (for the original Configurator).
-
-Big thanks to current and past contributors:
-* Budden, Martin (martinbudden)
-* Bardwell, Joshua (joshuabardwell)
-* Blackman, Jason (blckmn)
-* ctzsnooze
-* Höglund, Anders (andershoglund)
-* Ledvina, Petr (ledvinap) - **IO code awesomeness!**
-* kc10kevin
-* Keeble, Gary (MadmanK)
-* Keller, Michael (mikeller) - **Configurator brilliance**
-* Kravcov, Albert (skaman82) - **Configurator brilliance**
-* MJ666
-* Nathan (nathantsoi)
-* ravnav
-* sambas - **bringing us the F4**
-* savaga
-* Stålheim, Anton (KiteAnton)
-
-And many many others who haven't been mentioned....
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/betaflight/betaflight/blob/master/images/bf_logo.png"><img src="/betaflight/betaflight/raw/master/images/bf_logo.png" alt="贝塔夫莱特" style="max-width: 100%;"></a></p>
+<p dir="auto"><a href="https://github.com/betaflight/betaflight/releases"><img src="https://camo.githubusercontent.com/b8b37659a5f6e0fdebf8a1617d0e752be38577bf5ab8f32d2e7773941a0a68e6/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f62657461666c696768742f62657461666c69676874" alt="最新版本" data-canonical-src="https://img.shields.io/github/v/release/betaflight/betaflight" style="max-width: 100%;"></a> <a href="https://github.com/betaflight/betaflight/actions/workflows/nightly.yml"><img src="https://camo.githubusercontent.com/b25b449e282b1e291d069f93cafb99285ddd12ca0eb6129314485f4d2d5a2bb5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f62657461666c696768742f62657461666c696768742f6e696768746c792e796d6c3f6272616e63683d6d6173746572" alt="建造" data-canonical-src="https://img.shields.io/github/actions/workflow/status/betaflight/betaflight/nightly.yml?branch=master" style="max-width: 100%;"></a> <a href="https://www.gnu.org/licenses/gpl-3.0" rel="nofollow"><img src="https://camo.githubusercontent.com/6be00b1b55f8b9b6f6d85fa810b501a37e0d48bf99e98bb4381e92caeff02619/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d47504c76332d626c75652e737667" alt="许可证：GPL v3" data-canonical-src="https://img.shields.io/badge/License-GPLv3-blue.svg" style="max-width: 100%;"></a> <a href="https://discord.gg/n4E6ak4u3c" rel="nofollow"><img src="https://camo.githubusercontent.com/df1e37426f3a74b6938ba02871e1d41a7f73450ed507e64050f35f22a886d46f/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f383638303133343730303233353438393338" alt="加入我们的 Discord！" data-canonical-src="https://img.shields.io/discord/868013470023548938" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 是用于飞行多旋翼飞行器和固定翼飞行器的飞行控制软件（固件）。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这个分支与 Baseflight 和 Cleanflight 的不同之处在于它专注于飞行性能、前沿功能的添加以及广泛的目标支持。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">活动</font></font></h2><a id="user-content-events" class="anchor" aria-label="固定链接：活动" href="#events"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<table>
+<thead>
+<tr>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日期</font></font></th>
+<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件</font></font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2024 年 4 月 28 日</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">固件 4.5 版本</font></font></td>
+</tr>
+</tbody>
+</table>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">消息</font></font></h2><a id="user-content-news" class="anchor" aria-label="固定链接：新闻" href="#news"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提交新目标和更新目标的要求</font></font></h3><a id="user-content-requirements-for-the-submission-of-new-and-updated-targets" class="anchor" aria-label="永久链接：提交新目标和更新目标的要求" href="#requirements-for-the-submission-of-new-and-updated-targets"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从现在开始，对于添加新目标或修改现有目标的拉取请求将实施以下新要求：</font></font></p>
+<ol dir="auto">
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读</font></font><a href="https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬件规格</font></font></a></p>
+</li>
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不接受新的基于 F3 的目标；</font></font></p>
+</li>
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于任何要添加的新目标，只需将统一目标配置提交到</font></font><a href="https://github.com/betaflight/unified-targets/tree/master/configs/default"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/unified-targets/tree/master/configs/default</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。请参阅有关如何创建统一目标配置的</font></font><a href="https://betaflight.com/docs/manufacturer/creating-an-unified-target" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">说明</font></font></a><font style="vertical-align: inherit;"></font><code>src/main/target/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。如果新目标的 MCU 类型没有统一目标（请参阅上面的说明），则还必须提交</font><font style="vertical-align: inherit;">“旧版”格式的目标定义；</font></font></p>
+</li>
+<li>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于对现有目标的更改，需要将更改应用于</font></font><a href="https://github.com/betaflight/unified-targets/tree/master/configs/default"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/unified-targets/tree/master/configs/default</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的统一目标配置。如果目标不存在统一目标配置，则必须创建并提交新的统一目标配置。如果新目标的 MCU 类型没有统一目标（请参阅上面的说明），则</font></font><code>src/main/target/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">必须将“旧版”格式目标定义的更新与统一目标配置的更新一起提交。</font></font></p>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></h2><a id="user-content-features" class="anchor" aria-label="固定链接：功能" href="#features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 具有以下特点：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多色 RGB LED 灯带支持（使用可变长度 WS2811 可寻址 RGB 灯带，每个 LED 可以是不同的颜色 - 用于方向指示器、低电量警告、飞行模式状态、初始化故障排除等）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DShot（150、300 和 600）、Multishot、Oneshot（125 和 42）和 Proshot1000 电机协议支持</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑匣子飞行记录仪记录（记录到机载闪存或外部 microSD 卡（如果配备））</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持使用 STM32 F4、G4、F7 和 H7 处理器的目标</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PWM、PPM、SPI 和串行（SBus、SumH、SumD、Spektrum 1024/2048、XBus 等）RX 连接，带故障安全检测</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多种遥测协议（CRSF、FrSky、HoTT 智能端口、MSP 等）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过 ADC 的 RSSI - 使用 ADC 读取 PWM RSSI 信号，使用 FrSky D4R-II、X8R、X4R-SB 和 XSR 进行测试</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无需第三方 OSD 软件/固件/通信设备的 OSD 支持和配置</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OLED 显示屏 - 显示以下信息：电池电压/电流/mAh、配置文件、速率配置文件、模式、版本、传感器等</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">飞行中手动 PID 调节和速率调整</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用滑块调整 PID 和滤波器</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">评价资料和飞行过程中的选择</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可配置串行端口，用于串行 RX、遥测、ESC 遥测、MSP、GPS、OSD、声纳等 - 可在任何端口上使用大多数设备，包括软串行</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unify Pro 和 IRC Tramp 的 VTX 支持</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">还有更多。</font></font></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装和文档</font></font></h2><a id="user-content-installation--documentation" class="anchor" aria-label="永久链接：安装和文档" href="#installation--documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请参阅：</font></font><a href="https://betaflight.com/docs/wiki" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://betaflight.com/docs/wiki</font></font></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持和开发者渠道</font></font></h2><a id="user-content-support-and-developers-channel" class="anchor" aria-label="永久链接：支持和开发者频道" href="#support-and-developers-channel"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这里有一个专用的 Discord 服务器：</font></font></p>
+<p dir="auto"><a href="https://discord.gg/n4E6ak4u3c" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://discord.gg/n4E6ak4u3c</font></font></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们还有一个 Facebook 群组。加入我们，您可以在这里讨论 Betaflight、询问配置问题，或者只是与其他飞行员一起闲逛。</font></font></p>
+<p dir="auto"><a href="https://www.facebook.com/groups/betaflightgroup/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://www.facebook.com/groups/betaflightgroup/</font></font></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">礼仪：不要为了询问而询问，请等待足够长的时间以获得答复 - 有时人们出去飞行、睡觉或在工作，无法立即回答。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置工具</font></font></h2><a id="user-content-configuration-tool" class="anchor" aria-label="固定链接：配置工具" href="#configuration-tool"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要配置 Betaflight，您应该使用 Betaflight-configurator GUI 工具（Windows/OSX/Linux），可在此处找到：</font></font></p>
+<p dir="auto"><a href="https://github.com/betaflight/betaflight-configurator/releases/latest"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/betaflight-configurator/releases/latest</font></font></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贡献</font></font></h2><a id="user-content-contributing" class="anchor" aria-label="永久链接：贡献" href="#contributing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欢迎并鼓励您做出贡献。您可以通过多种方式做出贡献：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在固件或配置器中实现新功能（见</font></font><a href="#Developers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下文</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）；</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档更新和更正；</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">操作指南 - 收到帮助了吗？帮助他人吧！</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">错误报告和修复；</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新功能想法和建议；</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为配置器提供新的翻译，或者帮助我们维护现有的翻译（见</font></font><a href="#Translators"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下文</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font></font></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最好的起点是 Betaflight Discord（</font></font><a href="https://discord.gg/n4E6ak4u3c" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册）。其次是 github 问题跟踪器：</font></font></p>
+<p dir="auto"><a href="https://github.com/betaflight/betaflight/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/betaflight/issues </font></font></a>
+<a href="https://github.com/betaflight/betaflight-configurator/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/betaflight-configurator/issues</font></font></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在创建新问题之前，请先检查是否存在现有问题，然后先搜索，否则您会浪费人们本来可以编码的时间！</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"></font><a href="https://paypal.me/betaflight" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您想在经济上为我们的努力做出贡献，请考虑通过PayPal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">向我们捐款</font><font style="vertical-align: inherit;">。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您想持续提供资金捐助，您应该考虑成为我们在</font></font><a href="https://www.patreon.com/betaflight" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Patreon</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上的赞助人。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发人员</font></font></h2><a id="user-content-developers" class="anchor" aria-label="永久链接：开发人员" href="#developers"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们鼓励贡献错误修复和新功能。请注意，我们对拉取请求有全面的审核流程，并准备好解释您希望通过拉取请求实现的目标。在开始编写代码之前，请阅读我们的</font></font><a href="https://betaflight.com/docs/development" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><a href="https://betaflight.com/docs/development/CodingStyle" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编码风格定义</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GitHub 操作用于运行自动构建</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">译者</font></font></h2><a id="user-content-translators" class="anchor" aria-label="永久链接：译者" href="#translators"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们希望让英语不流利的飞行员也能使用 Betaflight，因此我们目前为 Betaflight 配置器维护 21 种语言的翻译：Català、Dansk、Deutsch、Español、Euskera、Français、Galego、Hrvatski、Bahasa Indonesia、Italiano、日本語、한국어、Latviešu、Português、Português Brasileiro、polski、Русский язык、Svenska、简体中文、繁體中文。我们有一支志愿翻译团队负责这项工作，但我们随时欢迎更多翻译人员来分担工作量，我们也热衷于添加更多语言。如果您想帮助我们进行翻译，您有以下选择：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您通过建议对您熟悉的语言的翻译进行一些更新或改进来提供帮助，请前往</font></font><a href="https://crowdin.com/project/betaflight-configurator" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crowdin</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并在那里添加您建议的翻译；</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您想开始从事新语言的翻译工作，或负责校对您非常熟悉的语言的翻译，请前往 Betaflight Discord 聊天室（</font></font><a href="https://discord.gg/n4E6ak4u3c" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此处</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册），并加入</font></font><a href="https://discord.com/channels/868013470023548938/1057773726915100702" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“翻译”</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">频道 - 那里的人可以帮助您添加新语言，或将您设置为校对员。</font></font></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬件问题</font></font></h2><a id="user-content-hardware-issues" class="anchor" aria-label="永久链接：硬件问题" href="#hardware-issues"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 不生产或分销自己的硬件。虽然我们与许多制造商合作并得到他们的支持，但我们不提供任何硬件支持。如果您遇到与飞行控制器或其他组件相关的任何硬件问题，请联系硬件制造商或供应商，或查看 RCGroups </font></font><a href="https://rcgroups.com/forums/showthread.php?t=2464844" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://rcgroups.com/forums/showthread.php?t=2464844</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，看看是否有其他遇到同样问题的人找到了解决方案。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 发布</font></font></h2><a id="user-content-betaflight-releases" class="anchor" aria-label="永久链接：Betaflight 发布" href="#betaflight-releases"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a href="https://github.com/betaflight/betaflight/releases"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/betaflight/betaflight/releases</font></font></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开源/贡献者</font></font></h2><a id="user-content-open-source--contributors" class="anchor" aria-label="永久链接：开源/贡献者" href="#open-source--contributors"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 是一款</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开源</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件，可供所有用户免费使用，且不提供任何担保。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 是从 Cleanflight 分叉而来的，因此感谢所有为 Cleanflight 及其起源做出贡献的人。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此分叉的起源（感谢！）：</font></font></p>
+<ul dir="auto">
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alexinparis</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（适用于 MultiWii），</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timecop</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（用于 Baseflight），</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多米尼克·克利夫顿</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（代表 Cleanflight）</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">borisbstyle</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> (用于 Betaflight)，以及</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sambas</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（用于原始 STM32F4 端口）。</font></font></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 配置器是从 Cleanflight 配置器及其起源分支出来的。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Betaflight 配置器的起源：</font></font></p>
+<ul dir="auto">
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dominic Clifton</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（负责 Cleanflight 配置器）和</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ctn</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（用于原始配置器）。</font></font></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">非常感谢当前和过去的贡献者：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">巴登，马丁（martinbudden）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">巴德韦尔，约书亚（joshuabardwell）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">布莱克曼，杰森（blckmn）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打瞌睡</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Höglund，Anders (andershoglund)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ledvina，Petr (ledvinap)—— </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IO 代码棒极了！</font></font></strong></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kc10凯文</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基布尔，加里（MadmanK）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">凯勒，迈克尔 (mikeller) -</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置器辉煌</font></font></strong></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kravcov，Albert (skaman82) -</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置器辉煌</font></font></strong></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MJ666</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nathan (纳森)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">拉夫纳夫</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桑巴舞——</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为我们带来 F4</font></font></strong></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">萨瓦加</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">斯托尔海姆，安东（KiteAnton）</font></font></li>
+</ul>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">还有许多尚未提及的人……</font></font></p>
+</article></div>
